@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties — PropEstate Hyderabad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-icon"><i class="fas fa-home"></i></div>
+      Prop<span>Estate</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars" style="color:var(--primary);"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 py-3 py-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="properties.html">Properties</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <li class="nav-item ms-2"><a class="nav-link btn-contact" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <h1 class="fade-up">Properties in Hyderabad</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb fade-up fade-up-1">
+          <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb-item active">Properties</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="filter-bar">
+    <form id="filterForm">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-3 col-sm-6">
+          <label class="form-label">Locality / Area</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white" style="border:1.5px solid #e5e7eb;border-right:none;border-radius:10px 0 0 10px;">
+              <i class="fas fa-map-marker-alt" style="color:var(--accent);font-size:0.85rem;"></i>
+            </span>
+            <input type="text" id="filterLocation" class="form-control border-start-0" placeholder="e.g. Banjara Hills, HITEC City..." style="border-radius:0 10px 10px 0;">
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-6">
+          <label class="form-label">Listing Type</label>
+          <select class="form-select" id="filterType">
+            <option value="">All Types</option>
+            <option value="buy">For Sale</option>
+            <option value="rent">For Rent</option>
+          </select>
+        </div>
+        <div class="col-md-2 col-sm-6">
+          <label class="form-label">Property Type</label>
+          <select class="form-select" id="filterCategory">
+            <option value="">All Types</option>
+            <option value="house">Independent House</option>
+            <option value="apartment">Apartment / Flat</option>
+            <option value="condo">High-Rise / Condo</option>
+            <option value="villa">Villa</option>
+          </select>
+        </div>
+        <div class="col-md-2 col-sm-6">
+          <label class="form-label">Min Bedrooms (BHK)</label>
+          <select class="form-select" id="filterBeds">
+            <option value="0">Any</option>
+            <option value="1">1 BHK+</option>
+            <option value="2">2 BHK+</option>
+            <option value="3">3 BHK+</option>
+            <option value="4">4 BHK+</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn-search">
+            <i class="fas fa-filter"></i> Apply Filters
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<section class="section-pad-sm">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3">
+
+        <div class="sidebar-card">
+          <h6>Budget Range</h6>
+          <input type="range" class="form-range" min="0" max="50000000" step="500000" value="50000000" id="filterPrice"
+            oninput="updatePriceLabel(+this.value)">
+          <div class="d-flex justify-content-between mt-1">
+            <small style="color:var(--text-muted);font-size:0.78rem;">₹0</small>
+            <small style="color:var(--primary);font-weight:700;font-size:0.85rem;" id="priceVal">₹5 Crore+</small>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h6>Property Size</h6>
+          <input type="range" class="form-range" min="0" max="10000" step="100" value="10000"
+            oninput="document.getElementById('sizeVal').textContent=(+this.value).toLocaleString()+' sqft'">
+          <div class="d-flex justify-content-between mt-1">
+            <small style="color:var(--text-muted);font-size:0.78rem;">0 sqft</small>
+            <small style="color:var(--primary);font-weight:700;font-size:0.85rem;" id="sizeVal">10,000 sqft</small>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h6>Amenities</h6>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a1"><label class="form-check-label" for="a1">Swimming Pool</label></div></div>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a2"><label class="form-check-label" for="a2">Garage / Parking</label></div></div>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a3"><label class="form-check-label" for="a3">Garden / Yard</label></div></div>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a4"><label class="form-check-label" for="a4">Air Conditioning</label></div></div>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a5"><label class="form-check-label" for="a5">24x7 Security</label></div></div>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a6"><label class="form-check-label" for="a6">Power Backup</label></div></div>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a7"><label class="form-check-label" for="a7">Gym / Fitness</label></div></div>
+          <div class="amenity-check"><div class="form-check"><input class="form-check-input" type="checkbox" id="a8"><label class="form-check-label" for="a8">Clubhouse</label></div></div>
+        </div>
+
+        <div class="sidebar-card text-center" style="background:var(--primary);">
+          <img src="https://i.pravatar.cc/80?img=57" alt="Agent" style="width:64px;height:64px;border-radius:50%;margin:0 auto 0.75rem;border:3px solid var(--accent);">
+          <h6 style="color:var(--white);border-bottom-color:var(--accent);">Ramesh Reddy</h6>
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.65);margin-bottom:1rem;">Top Agent · Jubilee Hills · 5.0 ★</p>
+          <a href="contact.html?agent=Ramesh%20Reddy" class="btn-primary-custom" style="font-size:0.82rem;padding:0.55rem 1.25rem;width:100%;justify-content:center;">
+            <i class="fas fa-phone-alt"></i> Contact Agent
+          </a>
+        </div>
+
+        <div class="sidebar-card">
+          <h6>Browse by Locality</h6>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#" onclick="setLocation('Jubilee Hills')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">Jubilee Hills</a>
+            <a href="#" onclick="setLocation('Banjara Hills')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">Banjara Hills</a>
+            <a href="#" onclick="setLocation('HITEC City')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">HITEC City</a>
+            <a href="#" onclick="setLocation('Gachibowli')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">Gachibowli</a>
+            <a href="#" onclick="setLocation('Kondapur')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">Kondapur</a>
+            <a href="#" onclick="setLocation('Madhapur')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">Madhapur</a>
+            <a href="#" onclick="setLocation('Kokapet')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">Kokapet</a>
+            <a href="#" onclick="setLocation('Miyapur')" class="amenity-tag" style="cursor:pointer;text-decoration:none;">Miyapur</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-9">
+        <div class="results-bar">
+          <p class="results-count mb-0">Showing <strong id="resultCount">9</strong> properties</p>
+          <div class="d-flex align-items-center gap-3">
+            <select class="sort-select" id="sortSelect">
+              <option value="">Sort: Newest First</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="sqft">Largest First</option>
+            </select>
+            <div class="view-toggle">
+              <button class="view-btn active" data-view="grid" title="Grid View"><i class="fas fa-th-large"></i></button>
+              <button class="view-btn" data-view="list" title="List View"><i class="fas fa-list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="propertyGrid"></div>
+
+        <nav class="mt-4 d-flex justify-content-center">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left" style="font-size:0.75rem;"></i></a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right" style="font-size:0.75rem;"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--accent);padding:2.5rem 0;">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+      <div>
+        <h4 style="font-family:'Playfair Display',serif;color:var(--primary);margin-bottom:0.25rem;">Can't find the right property?</h4>
+        <p style="font-size:0.9rem;color:rgba(26,60,94,0.7);margin:0;">Our Hyderabad agents are ready to find your perfect match.</p>
+      </div>
+      <a href="contact.html" style="background:var(--primary);color:#fff;font-weight:700;font-size:0.92rem;border-radius:10px;padding:0.8rem 2rem;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;transition:0.3s;" onmouseover="this.style.background='#0b1c2e'" onmouseout="this.style.background='var(--primary)'">
+        Contact an Agent <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand"><div class="brand-icon" style="background:var(--accent);color:var(--primary);"><i class="fas fa-home"></i></div>Prop<span>Estate</span></div>
+        <p class="footer-desc">Hyderabad's most trusted real estate platform. Connecting buyers, sellers and renters since 2015.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="footer-heading">Company</h6>
+        <ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li></ul>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="footer-heading">Services</h6>
+        <ul class="footer-links"><li><a href="#">Buy Property</a></li><li><a href="#">Sell Property</a></li><li><a href="#">Rental</a></li><li><a href="#">Home Loans</a></li></ul>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <h6 class="footer-heading">Contact Us</h6>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Plot 12, Road No. 2, Banjara Hills, Hyderabad – 500034</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 40 6600 1234</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@propestate.in</span></div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2025 PropEstate Hyderabad. All rights reserved. RERA Reg. No. A01400001234</span>
+      <div class="d-flex gap-3">
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:0.82rem;">Privacy Policy</a>
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:0.82rem;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="scrollToTop()" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function updatePriceLabel(val) {
+    const cr = val / 10000000;
+    const lakh = val / 100000;
+    document.getElementById('priceVal').textContent = cr >= 1 ? '₹' + cr.toFixed(1) + ' Cr' : '₹' + lakh.toFixed(0) + ' L';
+  }
+  function setLocation(loc) {
+    document.getElementById('filterLocation').value = loc;
+    document.getElementById('filterForm').dispatchEvent(new Event('submit'));
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const p = new URLSearchParams(location.search);
+    if (p.get('type')) document.getElementById('filterType').value = p.get('type');
+    if (p.get('cat'))  document.getElementById('filterCategory').value = p.get('cat');
+    if (p.get('loc'))  document.getElementById('filterLocation').value = p.get('loc');
+    if (p.get('type') || p.get('cat') || p.get('loc')) document.getElementById('filterForm').dispatchEvent(new Event('submit'));
+  });
+</script>
+</body>
+</html>

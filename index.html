@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PropEstate Hyderabad — Find Your Dream Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-icon"><i class="fas fa-home"></i></div>
+      Prop<span>Estate</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars" style="color:var(--primary);"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 py-3 py-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="properties.html">Properties</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item ms-2"><a class="nav-link btn-contact" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 hero-content">
+        <div class="hero-eyebrow fade-up">
+          <i class="fas fa-star"></i> Hyderabad's #1 Real Estate Platform
+        </div>
+        <h1 class="hero-title fade-up fade-up-1">
+          Find Your Perfect Home in <em>Hyderabad</em>
+        </h1>
+        <p class="hero-desc fade-up fade-up-2">
+          Explore thousands of verified properties across Jubilee Hills, Banjara Hills, HITEC City, Gachibowli, Kondapur and more. Buy, sell, or rent with confidence.
+        </p>
+        <div class="d-flex gap-3 flex-wrap fade-up fade-up-3">
+          <a href="properties.html" class="btn-primary-custom">
+            Browse Properties <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="contact.html" class="btn-outline-custom">
+            <i class="fas fa-phone-alt"></i> Talk to an Agent
+          </a>
+        </div>
+        <div class="hero-stats fade-up fade-up-4">
+          <div class="hero-stat">
+            <div class="hero-stat-num">5,200+</div>
+            <div class="hero-stat-label">Properties</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">850+</div>
+            <div class="hero-stat-label">Agents</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">Happy Clients</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block ps-5">
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Hyderabad Home">
+          <div class="hero-badge">
+            <div class="hero-badge-icon">🏠</div>
+            <div class="hero-badge-text">
+              <strong>New Listings</strong>
+              <span>80+ added this week</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="search-bar-wrap fade-up fade-up-4">
+          <div class="row g-3 align-items-end">
+            <div class="col-md-3 col-sm-6">
+              <label class="form-label">Location</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0" style="border:1.5px solid #e5e7eb;border-right:none;border-radius:10px 0 0 10px;">
+                  <i class="fas fa-map-marker-alt" style="color:var(--accent);"></i>
+                </span>
+                <input type="text" id="heroLocation" class="form-control border-start-0" placeholder="e.g. Banjara Hills, HITEC City..." style="border-radius:0 10px 10px 0;border-left:none;">
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <label class="form-label">Property Type</label>
+              <select class="form-select" id="heroCategory">
+                <option value="">Any Type</option>
+                <option value="house">Independent House</option>
+                <option value="apartment">Apartment / Flat</option>
+                <option value="condo">High-Rise / Condo</option>
+                <option value="villa">Villa</option>
+              </select>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <label class="form-label">Listing Type</label>
+              <select class="form-select" id="heroType">
+                <option value="">Buy or Rent</option>
+                <option value="buy">For Sale</option>
+                <option value="rent">For Rent</option>
+              </select>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <label class="form-label">Budget</label>
+              <select class="form-select" id="heroPrice">
+                <option value="">Any Budget</option>
+                <option value="5000000">Under ₹50 Lakhs</option>
+                <option value="10000000">₹50L – ₹1 Crore</option>
+                <option value="30000000">₹1Cr – ₹3 Crore</option>
+                <option value="999999999">₹3 Crore+</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <button class="btn-search" onclick="heroSearch()">
+                <i class="fas fa-search"></i> Search Properties
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POPULAR LOCALITIES ===== -->
+<section style="padding:3rem 0;background:var(--light-bg);">
+  <div class="container">
+    <div class="text-center mb-4">
+      <div class="section-label">Explore by Area</div>
+      <h2 class="section-title">Popular Localities in Hyderabad</h2>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <div class="col-auto"><a href="properties.html?loc=Jubilee+Hills" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>Jubilee Hills</a></div>
+      <div class="col-auto"><a href="properties.html?loc=Banjara+Hills" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>Banjara Hills</a></div>
+      <div class="col-auto"><a href="properties.html?loc=HITEC+City" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>HITEC City</a></div>
+      <div class="col-auto"><a href="properties.html?loc=Gachibowli" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>Gachibowli</a></div>
+      <div class="col-auto"><a href="properties.html?loc=Kondapur" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>Kondapur</a></div>
+      <div class="col-auto"><a href="properties.html?loc=Madhapur" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>Madhapur</a></div>
+      <div class="col-auto"><a href="properties.html?loc=Kokapet" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>Kokapet</a></div>
+      <div class="col-auto"><a href="properties.html?loc=Miyapur" class="locality-pill"><i class="fas fa-map-marker-alt me-2"></i>Miyapur</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POPULAR PROPERTIES ===== -->
+<section class="section-pad">
+  <div class="container">
+    <div class="row align-items-end mb-4">
+      <div class="col-md-7">
+        <div class="section-label">Handpicked for You</div>
+        <h2 class="section-title">Featured Properties</h2>
+        <p class="section-subtitle">Explore top-rated listings across Hyderabad's most sought-after localities.</p>
+      </div>
+      <div class="col-md-5 text-md-end mt-3 mt-md-0">
+        <a href="properties.html" class="btn-primary-custom">
+          View All Properties <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="d-flex gap-2 flex-wrap mb-4" id="homeFilterTabs">
+      <button class="filter-tab-btn active" onclick="filterHome('all', this)">All</button>
+      <button class="filter-tab-btn" onclick="filterHome('buy', this)">For Sale</button>
+      <button class="filter-tab-btn" onclick="filterHome('rent', this)">For Rent</button>
+    </div>
+    <div class="row" id="featuredGrid"></div>
+    <div class="text-center mt-2">
+      <a href="properties.html" style="font-size:0.9rem;color:var(--primary);font-weight:600;text-decoration:underline;">
+        See all 5,200+ Hyderabad listings →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section-pad services-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-subtitle mx-auto">Everything you need for a smooth real estate journey in Hyderabad.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-home"></i></div>
+          <h5>Buy a Home</h5>
+          <p>Find your ideal home across Hyderabad's top localities. RERA-verified listings with expert guidance.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-tag"></i></div>
+          <h5>Sell Property</h5>
+          <p>List your property and reach thousands of buyers in Hyderabad. Maximum visibility, best price.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-key"></i></div>
+          <h5>Rent a Place</h5>
+          <p>Explore furnished and semi-furnished rentals near HITEC City, Gachibowli, and the Financial District.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h5>Property Valuation</h5>
+          <p>Get an accurate market valuation of your Hyderabad property backed by real-time data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BANNER ===== -->
+<section class="stats-banner">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="2850">0</div>
+          <div class="stat-label">Properties for Sale</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="1400">0</div>
+          <div class="stat-label">Properties for Rent</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="5200">0</div>
+          <div class="stat-label">Total Listings</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="850">0</div>
+          <div class="stat-label">Verified Agents</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">Simple Steps</div>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle mx-auto">Find your perfect Hyderabad property in just three easy steps.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <div class="text-center p-4">
+          <div style="width:72px;height:72px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.6rem;color:var(--accent);">
+            <i class="fas fa-search"></i>
+          </div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Step 01</div>
+          <h5 style="color:var(--primary);margin-bottom:0.75rem;">Search by Locality</h5>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;">Filter by area, budget, BHK type, and amenities across all of Hyderabad's prime locations.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="text-center p-4">
+          <div style="width:72px;height:72px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.6rem;color:var(--primary);">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Step 02</div>
+          <h5 style="color:var(--primary);margin-bottom:0.75rem;">Explore & Shortlist</h5>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;">View detailed property pages with high-quality photos, floor plans, and locality insights.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="text-center p-4">
+          <div style="width:72px;height:72px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.6rem;color:var(--accent);">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Step 03</div>
+          <h5 style="color:var(--primary);margin-bottom:0.75rem;">Connect & Close</h5>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;">Contact our RERA-certified agents, schedule a site visit, and close your deal with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section-pad testimonials-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label" style="color:var(--accent-light);">Happy Customers</div>
+      <h2 class="section-title" style="color:var(--white);">What Our Clients Say</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">"PropEstate helped me find a stunning 4BHK villa in Jubilee Hills within my budget. Ramesh was extremely knowledgeable about the locality and guided us through the entire process."</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/80?img=57" alt="Aditya Rao">
+            <div class="testimonial-author-info"><strong>Aditya Rao</strong><span>Home Buyer, Jubilee Hills</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">"I was relocating from Bengaluru for my new job in HITEC City and PropEstate made finding a furnished rental incredibly easy. Got a great 3BHK in Kondapur in under a week!"</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/80?img=32" alt="Meera Krishnan">
+            <div class="testimonial-author-info"><strong>Meera Krishnan</strong><span>Tenant, Kondapur</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testimonial-text">"We sold our flat in Gachibowli at a great price within 3 weeks. The team handled all the paperwork and RERA compliance professionally. Highly recommend PropEstate."</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/80?img=12" alt="Ravi Teja">
+            <div class="testimonial-author-info"><strong>Ravi Teja</strong><span>Property Seller, Gachibowli</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section-pad cta-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="section-label" style="color:var(--accent-light);">List With Us</div>
+        <h2 class="section-title" style="color:var(--white);">Own Property in Hyderabad? List it with Us</h2>
+        <p class="section-subtitle" style="color:rgba(255,255,255,0.65);max-width:480px;">
+          Reach thousands of serious buyers and tenants. RERA-compliant listings, professional photography, and dedicated agent support.
+        </p>
+      </div>
+      <div class="col-lg-5 text-lg-end mt-4 mt-lg-0 d-flex gap-3 justify-content-lg-end flex-wrap">
+        <a href="contact.html" class="btn-primary-custom">List Your Property <i class="fas fa-plus-circle"></i></a>
+        <a href="contact.html" class="btn-outline-custom">Talk to an Agent</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">
+          <div class="brand-icon" style="background:var(--accent);color:var(--primary);"><i class="fas fa-home"></i></div>
+          Prop<span>Estate</span>
+        </div>
+        <p class="footer-desc">Hyderabad's most trusted real estate platform since 2015. We connect buyers, sellers, and renters with the best properties across the city.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="footer-heading">Company</h6>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li><li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li><li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="footer-heading">Services</h6>
+        <ul class="footer-links">
+          <li><a href="#">Buy Property</a></li><li><a href="#">Sell Property</a></li>
+          <li><a href="#">Rental</a></li><li><a href="#">Home Loans</a></li>
+          <li><a href="#">Valuation</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <h6 class="footer-heading">Contact Us</h6>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Plot 12, Road No. 2, Banjara Hills, Hyderabad – 500034</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 40 6600 1234</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@propestate.in</span></div>
+        <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon–Sat: 9 AM – 7 PM</span></div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2025 PropEstate Hyderabad. All rights reserved. RERA Reg. No. A01400001234</span>
+      <div class="d-flex gap-3">
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:0.82rem;">Privacy Policy</a>
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:0.82rem;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="scrollToTop()" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function heroSearch() {
+    const loc = document.getElementById('heroLocation').value;
+    const cat = document.getElementById('heroCategory').value;
+    const type = document.getElementById('heroType').value;
+    let url = 'properties.html?';
+    if (loc) url += `loc=${encodeURIComponent(loc)}&`;
+    if (cat) url += `cat=${cat}&`;
+    if (type) url += `type=${type}&`;
+    window.location.href = url;
+  }
+  document.querySelectorAll('.filter-tab-btn').forEach(btn => {
+    btn.style.cssText = 'background:#f3f4f6;border:none;font-size:0.85rem;font-weight:600;color:#374151;padding:0.5rem 1.25rem;border-radius:50px;cursor:pointer;transition:all 0.3s;';
+  });
+  const activeBtn = document.querySelector('.filter-tab-btn.active');
+  if (activeBtn) activeBtn.style.cssText = 'background:var(--primary);color:#fff;border:none;font-size:0.85rem;font-weight:600;padding:0.5rem 1.25rem;border-radius:50px;cursor:pointer;transition:all 0.3s;';
+</script>
+
+<style>
+  .locality-pill {
+    display: inline-flex; align-items: center; background: #fff; color: var(--primary);
+    border: 1.5px solid rgba(26,60,94,0.12); border-radius: 50px; padding: 0.5rem 1.2rem;
+    font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: var(--transition);
+  }
+  .locality-pill:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .locality-pill i { color: var(--accent); font-size: 0.75rem; }
+  .locality-pill:hover i { color: var(--accent-light); }
+</style>
+</body>
+</html>

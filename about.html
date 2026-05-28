@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — PropEstate Hyderabad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== About Page Specific Styles ===== */
+
+    /* Hero */
+    .about-hero {
+      background: linear-gradient(135deg, #0b1c2e 0%, var(--primary) 60%, #2a5280 100%);
+      padding: 5rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80') center/cover;
+      opacity: 0.10;
+    }
+    .about-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 80px;
+      background: var(--white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .about-hero-content { position: relative; z-index: 2; }
+    .about-hero h1 { font-size: clamp(2.5rem,5vw,4rem); color: var(--white); margin-bottom: 1.25rem; }
+    .about-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.8; }
+
+    /* Story Section */
+    .story-img {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(26,60,94,0.22);
+    }
+    .story-img img { width: 100%; height: 460px; object-fit: cover; display: block; }
+    .story-img-badge {
+      position: absolute;
+      bottom: 24px; right: -20px;
+      background: var(--accent);
+      border-radius: 14px;
+      padding: 1.25rem 1.75rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      text-align: center;
+      min-width: 160px;
+    }
+    .story-img-badge .big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 800;
+      color: var(--primary); line-height: 1;
+    }
+    .story-img-badge .big-label {
+      font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(26,60,94,0.75); margin-top: 0.3rem;
+    }
+    .story-dot {
+      display: inline-block; width: 10px; height: 10px;
+      background: var(--accent); border-radius: 50%; margin-right: 0.5rem;
+    }
+
+    /* Values */
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      border: 1.5px solid rgba(26,60,94,0.07);
+      transition: var(--transition);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--accent);
+      border-radius: 4px 0 0 4px;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.35s ease;
+    }
+    .value-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow); }
+    .value-card:hover::before { transform: scaleY(1); }
+    .value-icon {
+      width: 56px; height: 56px;
+      background: rgba(232,160,32,0.12);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--accent);
+      margin-bottom: 1.25rem; transition: var(--transition);
+    }
+    .value-card:hover .value-icon { background: var(--accent); color: var(--primary); }
+    .value-card h5 { font-size: 1.05rem; color: var(--primary); margin-bottom: 0.6rem; }
+    .value-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; margin: 0; }
+
+    /* Team */
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(26,60,94,0.07);
+      transition: var(--transition);
+      text-align: center;
+    }
+    .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(26,60,94,0.18); }
+    .team-card-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    .team-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .team-card:hover .team-card-img img { transform: scale(1.07); }
+    .team-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,60,94,0.7) 0%, transparent 60%);
+      opacity: 0; transition: var(--transition);
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 1.5rem;
+    }
+    .team-card:hover .team-card-overlay { opacity: 1; }
+    .team-social { display: flex; gap: 0.5rem; }
+    .team-social a {
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 0.85rem;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .team-social a:hover { background: var(--accent); color: var(--primary); }
+    .team-card-body { padding: 1.25rem 1rem 1.5rem; }
+    .team-card-body h5 { font-size: 1rem; color: var(--primary); margin-bottom: 0.2rem; }
+    .team-card-body .role { font-size: 0.8rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+    .team-card-body p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
+
+    /* Milestones */
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--primary));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 4px;
+      width: 22px; height: 22px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px rgba(232,160,32,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; color: var(--primary);
+    }
+    .timeline-year {
+      font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+    .timeline-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    /* Awards */
+    .award-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      border: 1.5px solid rgba(26,60,94,0.07);
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      transition: var(--transition);
+    }
+    .award-card:hover { box-shadow: var(--card-shadow); transform: translateY(-3px); }
+    .award-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      background: rgba(232,160,32,0.12); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--accent);
+    }
+    .award-card h6 { font-size: 0.92rem; color: var(--primary); font-weight: 700; margin-bottom: 0.2rem; }
+    .award-card p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* Partners */
+    .partner-logo {
+      background: var(--white);
+      border: 1.5px solid rgba(26,60,94,0.07);
+      border-radius: 12px;
+      padding: 1.25rem 1.75rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+      height: 80px;
+    }
+    .partner-logo:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(232,160,32,0.15); }
+    .partner-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: #9ca3af; transition: var(--transition);
+    }
+    .partner-logo:hover span { color: var(--primary); }
+
+    /* CTA Banner */
+    .about-cta {
+      background: linear-gradient(135deg, var(--accent) 0%, #f5c05a 100%);
+      border-radius: 20px;
+      padding: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-cta::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 250px; height: 250px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+    }
+    .about-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-icon"><i class="fas fa-home"></i></div>
+      Prop<span>Estate</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars" style="color:var(--primary);"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 py-3 py-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="properties.html">Properties</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+        <li class="nav-item ms-2"><a class="nav-link btn-contact" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== ABOUT HERO ===== -->
+<section class="about-hero">
+  <div class="container">
+    <div class="about-hero-content">
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="background:transparent;padding:0;margin:0;">
+          <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.55);font-size:0.88rem;">Home</a></li>
+          <li class="breadcrumb-item active" style="color:var(--accent);font-size:0.88rem;">About Us</li>
+        </ol>
+      </nav>
+      <div class="section-label fade-up" style="color:var(--accent-light);">Our Story</div>
+      <h1 class="fade-up fade-up-1">
+        Hyderabad's Most Trusted<br>
+        <em style="font-style:italic;color:var(--accent);">Real Estate Partner</em>
+      </h1>
+      <p class="fade-up fade-up-2">
+        Since 2015, PropEstate has helped over 12,000 families find their dream homes across Hyderabad. We combine deep local expertise with modern technology to make property transactions transparent, fast, and stress-free.
+      </p>
+      <div class="d-flex gap-3 mt-4 flex-wrap fade-up fade-up-3">
+        <a href="properties.html" class="btn-primary-custom">Browse Properties <i class="fas fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn-outline-custom"><i class="fas fa-phone-alt"></i> Talk to Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR STORY ===== -->
+<section class="section-pad">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <div class="story-img">
+          <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=800&q=80" alt="PropEstate Team">
+          <div class="story-img-badge">
+            <div class="big-num">10+</div>
+            <div class="big-label">Years in<br>Hyderabad</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Built on Trust, Driven by Excellence</h2>
+        <p style="font-size:0.97rem;color:var(--text-muted);line-height:1.9;margin-bottom:1.25rem;">
+          PropEstate was founded in 2015 with a single mission — to make real estate in Hyderabad simple, transparent, and accessible for everyone. What started as a small team of 5 property consultants in Banjara Hills has grown into a full-service real estate company with over 150 RERA-certified agents operating across all major localities.
+        </p>
+        <p style="font-size:0.97rem;color:var(--text-muted);line-height:1.9;margin-bottom:2rem;">
+          We believe every family deserves to find the right home without stress or confusion. That's why we go beyond just listings — we offer end-to-end support including legal verification, home loans, GHMC approvals, and post-sale assistance, all under one roof.
+        </p>
+        <div class="row g-3">
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-dark);font-weight:500;">
+              <span class="story-dot"></span> RERA-Certified Agents
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-dark);font-weight:500;">
+              <span class="story-dot"></span> Zero Hidden Charges
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-dark);font-weight:500;">
+              <span class="story-dot"></span> Legal Document Verification
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-dark);font-weight:500;">
+              <span class="story-dot"></span> Home Loan Assistance
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-dark);font-weight:500;">
+              <span class="story-dot"></span> 7-Day Support
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-dark);font-weight:500;">
+              <span class="story-dot"></span> Verified Listings Only
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-banner">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="12000">0</div>
+          <div class="stat-label">Happy Families</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="150">0</div>
+          <div class="stat-label">RERA Agents</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="5200">0</div>
+          <div class="stat-label">Active Listings</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number" data-count="10">0</div>
+          <div class="stat-label">Years of Trust</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR VALUES ===== -->
+<section class="section-pad" style="background:var(--light-bg);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">What We Stand For</div>
+      <h2 class="section-title">Our Core Values</h2>
+      <p class="section-subtitle mx-auto">Every decision we make is guided by these principles.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+          <h5>Transparency First</h5>
+          <p>We believe in complete openness — from property documents to agent fees. No hidden costs, no surprises. What you see is exactly what you get.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-handshake"></i></div>
+          <h5>Client-Centric Approach</h5>
+          <p>Your needs come first. Our agents take time to understand your budget, lifestyle, and future goals before suggesting any property.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-certificate"></i></div>
+          <h5>RERA Compliance</h5>
+          <p>Every agent and listing on our platform is RERA-verified. We hold ourselves to the highest legal standards in the industry.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+          <h5>Local Expertise</h5>
+          <p>Our agents live and breathe Hyderabad. From Jubilee Hills to Miyapur, we have deep knowledge of every locality's micro-market.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-users"></i></div>
+          <h5>Community Focused</h5>
+          <p>We're not just selling properties — we're building communities. We work with builders who prioritise quality, green spaces, and connectivity.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-rocket"></i></div>
+          <h5>Technology Driven</h5>
+          <p>From virtual tours to digital documentation, we leverage the latest technology to make your property journey faster and smarter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEET THE TEAM ===== -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">The People Behind PropEstate</div>
+      <h2 class="section-title">Meet Our Expert Team</h2>
+      <p class="section-subtitle mx-auto">Our RERA-certified agents bring years of local expertise and a genuine passion for helping families find their perfect home.</p>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=57" alt="Ramesh Reddy">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Ramesh%20Reddy"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Ramesh Reddy</h5>
+            <div class="role">Founder & CEO</div>
+            <p>15+ years in Hyderabad real estate. Specialist in Jubilee Hills and Banjara Hills luxury properties.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=47" alt="Priya Sharma">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Priya%20Sharma"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Priya Sharma</h5>
+            <div class="role">Head of Rentals</div>
+            <p>Expert in IT corridor rentals — HITEC City, Gachibowli & Kondapur. Trusted by 2,000+ IT professionals.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=33" alt="Vikram Nair">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Vikram%20Nair"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Vikram Nair</h5>
+            <div class="role">Luxury Homes Specialist</div>
+            <p>Kokapet, Nanakramguda, and Financial District specialist. Closed ₹200+ Crore in deals since 2018.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=52" alt="Suresh Rao">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Suresh%20Rao"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Suresh Rao</h5>
+            <div class="role">Senior Property Advisor</div>
+            <p>Independent house & villa expert across Banjara Hills and Madhapur. 10 years of trusted service.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=44" alt="Anjali Menon">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Anjali%20Menon"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Anjali Menon</h5>
+            <div class="role">Rental & Leasing Agent</div>
+            <p>Gachibowli & Miyapur rentals expert. Known for swift placements and tenant-friendly guidance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=29" alt="Kavitha Raju">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Kavitha%20Raju"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Kavitha Raju</h5>
+            <div class="role">Property Consultant</div>
+            <p>Madhapur, Kondapur & Kukatpally specialist. Connects buyers with builder-direct deals.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=60" alt="Arun Kumar">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Arun%20Kumar"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Arun Kumar</h5>
+            <div class="role">High-Rise & Condo Expert</div>
+            <p>Premium apartment specialist in Kondapur and Nanakramguda. Focused on gated communities.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="team-card">
+          <div class="team-card-img">
+            <img src="https://i.pravatar.cc/400?img=15" alt="Rajesh Naidu">
+            <div class="team-card-overlay">
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="contact.html?agent=Rajesh%20Naidu"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h5>Rajesh Naidu</h5>
+            <div class="role">Financial District Specialist</div>
+            <p>Deep expertise in Nanakramguda, ORR corridor & Kokapet. Trusted by NRI and corporate buyers.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR JOURNEY ===== -->
+<section class="section-pad" style="background:var(--light-bg);">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5">
+        <div class="section-label">How We Grew</div>
+        <h2 class="section-title">Our Journey So Far</h2>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.85;margin-bottom:2rem;">
+          From a modest office in Banjara Hills to one of Hyderabad's most recognised real estate brands — here are the milestones that shaped us.
+        </p>
+        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80" alt="Office" style="width:100%;border-radius:var(--radius);box-shadow:var(--card-shadow);">
+      </div>
+      <div class="col-lg-7">
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-star"></i></div>
+            <div class="timeline-year">2015 — Founded</div>
+            <div class="timeline-title">PropEstate Opens Its Doors</div>
+            <p class="timeline-desc">Started with 5 agents in a small Banjara Hills office. Closed our first 10 deals in the first month, mostly residential apartments in HITEC City.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-star"></i></div>
+            <div class="timeline-year">2017 — Expansion</div>
+            <div class="timeline-title">Expanded to 8 Hyderabad Localities</div>
+            <p class="timeline-desc">Opened dedicated desks for Jubilee Hills, Gachibowli, Kondapur and Madhapur. Team grew to 30 agents. Crossed 1,000 successful transactions.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-star"></i></div>
+            <div class="timeline-year">2019 — Digital Launch</div>
+            <div class="timeline-title">Launched PropEstate Online Platform</div>
+            <p class="timeline-desc">Introduced our digital property listings portal with virtual tours, online documentation, and real-time market data. Monthly traffic reached 50,000 users.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-star"></i></div>
+            <div class="timeline-year">2021 — RERA Certified</div>
+            <div class="timeline-title">Became Fully TSRERA Compliant</div>
+            <p class="timeline-desc">All 80+ agents achieved full RERA certification under TSRERA. Became one of the first Hyderabad firms to mandate RERA compliance across the entire team.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-star"></i></div>
+            <div class="timeline-year">2023 — Recognition</div>
+            <div class="timeline-title">Best Real Estate Company — Hyderabad</div>
+            <p class="timeline-desc">Awarded "Best Real Estate Company in Hyderabad" at the Telangana Real Estate Awards. Crossed ₹500 Crore in total transactions and 10,000 families served.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fas fa-star"></i></div>
+            <div class="timeline-year">2025 — Today</div>
+            <div class="timeline-title">150 Agents, 5,200+ Active Listings</div>
+            <p class="timeline-desc">Now Hyderabad's most trusted full-service real estate platform — covering sales, rentals, home loans, legal services and property management.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AWARDS ===== -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">Recognition</div>
+      <h2 class="section-title">Awards &amp; Achievements</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-trophy"></i></div>
+          <div>
+            <h6>Best Real Estate Company — Hyderabad 2023</h6>
+            <p>Telangana Real Estate Awards · Recognised for transparency, client satisfaction, and RERA compliance leadership.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-medal"></i></div>
+          <div>
+            <h6>Top Property Portal — South India 2022</h6>
+            <p>India Real Estate Forum · Ranked #1 in South India for verified listings and agent responsiveness.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-star"></i></div>
+          <div>
+            <h6>4.8 ★ Rating on Google — 2,400+ Reviews</h6>
+            <p>Consistently rated 4.8 stars on Google with over 2,400 verified client reviews praising agent support and service speed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-certificate"></i></div>
+          <div>
+            <h6>TSRERA Compliance Excellence Award 2021</h6>
+            <p>Awarded by the Telangana Real Estate Regulatory Authority for achieving 100% RERA certification across the entire agent team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUSTED PARTNERS ===== -->
+<section class="section-pad" style="background:var(--light-bg);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">Our Partners</div>
+      <h2 class="section-title">Trusted by Leading Builders &amp; Banks</h2>
+      <p class="section-subtitle mx-auto">We work with Hyderabad's top builders and financial institutions to give you the best options.</p>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>My Home</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>Prestige</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>Aparna</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>HDFC Bank</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>SBI Home</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>ICICI Bank</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>Lodha</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>Axis Bank</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>Sobha</span></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="partner-logo"><span>GHMC</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="section-pad">
+  <div class="container">
+    <div class="about-cta">
+      <div class="row align-items-center position-relative" style="z-index:2;">
+        <div class="col-lg-7 mb-4 mb-lg-0">
+          <div style="font-size:0.75rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,60,94,0.65);margin-bottom:0.75rem;">
+            Ready to Find Your Home?
+          </div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);color:var(--primary);margin-bottom:0.75rem;">
+            Let's Find Your Perfect Property in Hyderabad
+          </h2>
+          <p style="font-size:0.95rem;color:rgba(26,60,94,0.72);max-width:480px;line-height:1.75;margin:0;">
+            Browse 5,200+ RERA-verified listings or let our expert agents find the right property for your budget and lifestyle.
+          </p>
+        </div>
+        <div class="col-lg-5 d-flex gap-3 justify-content-lg-end flex-wrap">
+          <a href="properties.html" style="background:var(--primary);color:#fff;font-weight:700;font-size:0.95rem;border-radius:10px;padding:0.85rem 2rem;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;transition:0.3s;" onmouseover="this.style.background='#0b1c2e'" onmouseout="this.style.background='var(--primary)'">
+            Browse Listings <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="contact.html" style="background:rgba(26,60,94,0.12);color:var(--primary);font-weight:700;font-size:0.95rem;border-radius:10px;padding:0.85rem 2rem;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;transition:0.3s;border:2px solid rgba(26,60,94,0.2);" onmouseover="this.style.background='rgba(26,60,94,0.2)'" onmouseout="this.style.background='rgba(26,60,94,0.12)'">
+            <i class="fas fa-phone-alt"></i> Contact Agent
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">
+          <div class="brand-icon" style="background:var(--accent);color:var(--primary);"><i class="fas fa-home"></i></div>
+          Prop<span>Estate</span>
+        </div>
+        <p class="footer-desc">Hyderabad's most trusted real estate platform since 2015. RERA-certified agents, verified listings, transparent deals.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="footer-heading">Company</h6>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <h6 class="footer-heading">Services</h6>
+        <ul class="footer-links">
+          <li><a href="properties.html">Buy Property</a></li>
+          <li><a href="#">Sell Property</a></li>
+          <li><a href="#">Rental</a></li>
+          <li><a href="#">Home Loans</a></li>
+          <li><a href="#">Valuation</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <h6 class="footer-heading">Contact Us</h6>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Plot 12, Road No. 2, Banjara Hills, Hyderabad – 500034</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 40 6600 1234</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@propestate.in</span></div>
+        <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon–Sat: 9 AM – 7 PM</span></div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2025 PropEstate Hyderabad. All rights reserved. RERA Reg. No. A01400001234</span>
+      <div class="d-flex gap-3">
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:0.82rem;">Privacy Policy</a>
+        <a href="#" style="color:rgba(255,255,255,0.35);font-size:0.82rem;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="scrollToTop()" title="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
